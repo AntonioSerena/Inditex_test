@@ -1,9 +1,9 @@
-package com.api.spring.jpa.h2.exception;
+package com.rest.inditex.exception;
 
-public class InternalException extends Exception {
+public class GeneralException extends Exception {
     private final String message;
 
-    public InternalException(final String message) {
+    public GeneralException(final String message) {
         this.message = message;
     }
 
