@@ -1,6 +1,6 @@
 package com.rest.inditex.controller;
 
-import com.rest.inditex.model.Prices;
+import com.rest.inditex.entity.Prices;
 import com.rest.inditex.model.PriceRequest;
 import com.rest.inditex.model.PriceResponse;
 import com.rest.inditex.service.PriceService;

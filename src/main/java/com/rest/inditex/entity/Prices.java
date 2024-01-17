@@ -1,4 +1,4 @@
-package com.rest.inditex.model;
+package com.rest.inditex.entity;
 
 import jakarta.persistence.*;
 

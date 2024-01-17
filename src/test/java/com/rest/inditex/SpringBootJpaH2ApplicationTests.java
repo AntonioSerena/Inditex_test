@@ -1,6 +1,6 @@
 package com.rest.inditex;
 
-import com.rest.inditex.model.Prices;
+import com.rest.inditex.entity.Prices;
 import com.rest.inditex.repository.PriceRepository;
 import com.rest.inditex.model.PriceRequest;
 import com.rest.inditex.model.PriceResponse;

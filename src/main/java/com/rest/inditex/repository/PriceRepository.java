@@ -1,6 +1,6 @@
 package com.rest.inditex.repository;
 
-import com.rest.inditex.model.Prices;
+import com.rest.inditex.entity.Prices;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
