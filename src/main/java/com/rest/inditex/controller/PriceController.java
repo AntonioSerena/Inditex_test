@@ -1,6 +1,5 @@
 package com.rest.inditex.controller;
 
-import com.rest.inditex.entity.Prices;
 import com.rest.inditex.model.PriceRequest;
 import com.rest.inditex.model.PriceResponse;
 import com.rest.inditex.service.PriceServiceImpl;
@@ -28,18 +27,15 @@ public class PriceController {
 
   @GetMapping("/allPrices")
   public ResponseEntity<List<PriceResponse>> getAllPrices() {
-      List<PriceResponse> pricesList = PriceServiceImpl.getAll();
-      return new ResponseEntity<>(pricesList, HttpStatus.OK);
+      List<PriceResponse> priceResponseList = PriceServiceImpl.getAll();
+      return new ResponseEntity<>(priceResponseList, HttpStatus.OK);
   }
 
   @GetMapping("/price")
-  public ResponseEntity<List<PriceResponse>>getPrice(@RequestBody PriceRequest priceRequest) {
+  public ResponseEntity<PriceResponse>getPrice(@RequestBody PriceRequest priceRequest) {// public ResponseEntity<PriceResponse>getPrice(@RequestBody PriceRequest priceRequest) {
     try {
-
-      List<PriceResponse> priceResponseList = PriceServiceImpl.getPriceByApplicationDate(priceRequest);
-
-      return new ResponseEntity<>(priceResponseList, HttpStatus.OK);
-
+      PriceResponse priceResponse = PriceServiceImpl.getPriceByApplicationDate(priceRequest);
+      return new ResponseEntity<>(priceResponse, HttpStatus.OK);
     } catch (Exception exc) {
       throw new ResponseStatusException(
               HttpStatus.SERVICE_UNAVAILABLE, "PriceController error: ", exc);

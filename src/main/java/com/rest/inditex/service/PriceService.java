@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface PriceService {
     List<PriceResponse> getAll ();
-    List<PriceResponse> getPriceByApplicationDate (PriceRequest priceRequest);
+    PriceResponse getPriceByApplicationDate (PriceRequest priceRequest);
 }

@@ -68,28 +68,28 @@ class SpringBootJpaH2ApplicationTests {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-H.mm.ss");
 
 		PriceRequest priceRequest1 = new PriceRequest(LocalDateTime.parse("2020-06-14-10.00.00", formatter), "35455", 1);
-		List <PriceResponse> priceResponseList1 = priceService.getPriceByApplicationDate (priceRequest1);
-		Assert.isTrue(priceResponseList1.get(0).getPrice() == 35.5,
-				"Para " + priceRequest1.getApplicationDate() + " precio INCORRETO, ha encontrado: " + priceResponseList1.get(0).getPrice());
+		PriceResponse priceResponse1 = priceService.getPriceByApplicationDate(priceRequest1);
+		Assert.isTrue(priceResponse1.getPrice() == 35.5,
+				"Para rq1 " + priceRequest1.getApplicationDate() + " precio INCORRETO, ha encontrado: " + priceResponse1.getPrice());
 
 		PriceRequest priceRequest2 = new PriceRequest(LocalDateTime.parse("2020-06-14-16.00.00", formatter), "35455", 1);
-		List <PriceResponse> priceResponseList2 = priceService.getPriceByApplicationDate (priceRequest2);
-		Assert.isTrue(priceResponseList2.get(0).getPrice() == 35.5,
-				"Para " + priceRequest2.getApplicationDate() + " precio INCORRETO, ha encontrado: " + priceResponseList2.get(0).getPrice());
+		PriceResponse priceResponse2 = priceService.getPriceByApplicationDate (priceRequest2);
+		Assert.isTrue(priceResponse2.getPrice() == 25.45,
+				"Para rq2 " + priceRequest2.getApplicationDate() + " precio INCORRETO, ha encontrado: " + priceResponse2.getPrice());
 
 		PriceRequest priceRequest3 = new PriceRequest(LocalDateTime.parse("2020-06-14-21.00.00", formatter), "35455", 1);
-		List <PriceResponse> priceResponseList3 = priceService.getPriceByApplicationDate (priceRequest3);
-		Assert.isTrue(priceResponseList3.get(0).getPrice() == 35.5,
-				"Para " + priceRequest3.getApplicationDate() + " precio INCORRETO, ha encontrado: " + priceResponseList3.get(0).getPrice());
+		PriceResponse priceResponse3 = priceService.getPriceByApplicationDate (priceRequest3);
+		Assert.isTrue(priceResponse3.getPrice() == 35.5,
+				"Para rq3 " + priceRequest3.getApplicationDate() + " precio INCORRETO, ha encontrado: " + priceResponse3.getPrice());
 
 		PriceRequest priceRequest4 = new PriceRequest(LocalDateTime.parse("2020-06-15-10.00.00", formatter), "35455", 1);
-		List <PriceResponse> priceResponseList4 = priceService.getPriceByApplicationDate (priceRequest4);
-		Assert.isTrue(priceResponseList4.size() == 2,
-		"Para " + priceRequest4.getApplicationDate() + " ha encontrado " + priceResponseList4.size() + " precios\n" + priceResponseList4  );
+		PriceResponse priceResponse4 = priceService.getPriceByApplicationDate (priceRequest4);
+		Assert.isTrue(priceResponse4.getPrice() == 30.5,
+				"Para rq4 " + priceRequest4.getApplicationDate() + " precio INCORRETO, ha encontrado: " + priceResponse4.getPrice());
 
 		PriceRequest priceRequest5 = new PriceRequest(LocalDateTime.parse("2020-06-16-21.00.00", formatter), "35455", 1);
-		List <PriceResponse> priceResponseList5 = priceService.getPriceByApplicationDate (priceRequest5);
-		Assert.isTrue(priceResponseList5.get(0).getPrice() == 35.5,
-				"Para " + priceRequest5.getApplicationDate() + " precio INCORRETO, ha encontrado: " + priceResponseList5.get(0).getPrice());
+		PriceResponse priceResponse5 = priceService.getPriceByApplicationDate (priceRequest5);
+		Assert.isTrue(priceResponse5.getPrice() == 38.95,
+				"Para rq5 " + priceRequest5.getApplicationDate() + " precio INCORRETO, ha encontrado: " + priceResponse5.getPrice());
 	}
 }
