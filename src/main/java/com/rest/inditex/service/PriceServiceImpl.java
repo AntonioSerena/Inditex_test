@@ -28,6 +28,7 @@ public class PriceServiceImpl implements PriceService {
         try {
             List <Prices> pricesList = priceRepository.findByApplicationDateTime(priceRequest.getProductId(),
                     priceRequest.getBrandId(), priceRequest.getApplicationDate());
+
             List <PriceResponse> priceResponseList = new ArrayList<>();
             for (Prices prices : pricesList) {
                 priceResponseList.add(new PriceResponse(prices.getProductId(), prices.getBrandId(),
