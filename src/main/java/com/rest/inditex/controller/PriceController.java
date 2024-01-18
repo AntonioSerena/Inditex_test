@@ -27,8 +27,8 @@ public class PriceController {
   }
 
   @GetMapping("/allPrices")
-  public ResponseEntity<List<Prices>> getAll() {
-      List<Prices> pricesList = PriceServiceImpl.getAll();
+  public ResponseEntity<List<PriceResponse>> getAllPrices() {
+      List<PriceResponse> pricesList = PriceServiceImpl.getAll();
       return new ResponseEntity<>(pricesList, HttpStatus.OK);
   }
 

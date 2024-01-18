@@ -7,6 +7,6 @@ import com.rest.inditex.entity.Prices;
 import java.util.List;
 
 public interface PriceService {
-    List<Prices> getAll ();
+    List<PriceResponse> getAll ();
     List<PriceResponse> getPriceByApplicationDate (PriceRequest priceRequest);
 }

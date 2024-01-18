@@ -19,20 +19,37 @@ public class PriceServiceImpl implements PriceService {
     private PriceRepository priceRepository;
 
     @Override
-    public List<Prices> getAll () {
-        return priceRepository.findAll();
+    public List<PriceResponse> getAll() {
+        List<PriceResponse> priceResponseList = new ArrayList<>();
+        for (Prices prices : priceRepository.findAll()) {
+            priceResponseList.add(new PriceResponse(
+                    prices.getProductId(),
+                    prices.getBrandId(),
+                    prices.getPriceList(),
+                    prices.getStartDate(),
+                    prices.getEndDate(),
+                    prices.getPrice())
+            );
+        }
+        return priceResponseList;
     }
 
     @Override
-    public List<PriceResponse> getPriceByApplicationDate (PriceRequest priceRequest) {
+    public List<PriceResponse> getPriceByApplicationDate(PriceRequest priceRequest) {
         try {
-            List <Prices> pricesList = priceRepository.findByApplicationDateTime(priceRequest.getProductId(),
+            List<Prices> pricesList = priceRepository.findByApplicationDateTime(priceRequest.getProductId(),
                     priceRequest.getBrandId(), priceRequest.getApplicationDate());
 
-            List <PriceResponse> priceResponseList = new ArrayList<>();
+            List<PriceResponse> priceResponseList = new ArrayList<>();
             for (Prices prices : pricesList) {
-                priceResponseList.add(new PriceResponse(prices.getProductId(), prices.getBrandId(),
-                        prices.getPriceList(), prices.getStartDate(), prices.getEndDate(), prices.getPrice()));
+                priceResponseList.add(
+                        new PriceResponse(prices.getProductId(),
+                                prices.getBrandId(),
+                                prices.getPriceList(),
+                                prices.getStartDate(),
+                                prices.getEndDate(),
+                                prices.getPrice())
+                );
             }
             return priceResponseList;
 
