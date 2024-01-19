@@ -30,8 +30,25 @@ class SpringBootJpaH2ApplicationTests {
 	}
 
 	@Test
-	public void testPriceRepository() {
+	public void testEntity() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-H.mm.ss");
 
+		LocalDateTime start_date = LocalDateTime.parse("2020-06-14-00.00.00", formatter);
+		LocalDateTime end_date = LocalDateTime.parse("2020-12-31-23.59.59", formatter);
+		Prices testPrice = new Prices(1, 1, start_date, end_date, 1, "35455", 0, 35.50, "EUR");
+
+		Assert.isTrue(testPrice.getBrandId() == 1, "brandID INCORRETO, ahora hay: " + testPrice.getBrandId());
+		Assert.isTrue(testPrice.getStartDate() == start_date, "start_date INCORRETO, ahora hay: " + testPrice.getStartDate());
+		Assert.isTrue(testPrice.getEndDate() == end_date, "end_date INCORRETO, ahora hay: " + testPrice.getEndDate());
+		Assert.isTrue(testPrice.getPriceList() == 1, "Tarifa INCORRETA, ahora hay: " + testPrice.getPriceList());
+		Assert.isTrue(testPrice.getProductId().equals("35455"), "productID INCORRETO, ahora hay: " + testPrice.getProductId());
+		Assert.isTrue(testPrice.getPriority() == 0, "Prioridad INCORRETA, ahora hay: " + testPrice.getPriority());
+		Assert.isTrue(testPrice.getPrice() == 35.50, "Precio INCORRETO, ahora hay: " + testPrice.getPrice());
+		Assert.isTrue(testPrice.getCurr().equals("EUR"), "Moneda INCORRETA, ahora hay: " + testPrice.getCurr());
+	}
+
+	@Test
+	public void testPriceRepository() {
 		if (priceRepository.findAll().size() > 0) priceRepository.deleteAll();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-H.mm.ss");
 
