@@ -48,6 +48,13 @@ class SpringBootJpaH2ApplicationTests {
 	}
 
 	@Test
+	public void testModel() {
+		/*
+		Aquí se harian los test unitarios para las clases PriceRequest y PriceResponse
+		 */
+	}
+
+	@Test
 	public void testPriceRepository() {
 		if (priceRepository.findAll().size() > 0) priceRepository.deleteAll();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-H.mm.ss");
